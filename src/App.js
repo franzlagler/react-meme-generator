@@ -7,6 +7,7 @@ import Heading from './Heading';
 import HorizontalRuler from './HorizontalRuler';
 import Input from './InputField';
 import MemeImage from './MemeImage';
+import Options from './Options';
 
 const mainContainer = css`
   display: grid;
@@ -42,7 +43,6 @@ function App() {
     const memeDataUpdated = userInput.map((element) => {
       return element.toLowerCase().replace(' ', '_');
     });
-
     setMemeData(memeDataUpdated);
   };
 
@@ -69,6 +69,7 @@ function App() {
           value={userInput[2]}
           handleInputChange={handleInputChange}
         />
+        <Options />
         <Button name="Generate" handleButtonClick={handleButtonClick} />
         <HorizontalRuler />
         <MemeImage memeData={memeData} />
