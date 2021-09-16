@@ -33,7 +33,7 @@ function App() {
   const [templateSelection, setTemplateSelection] = useState('');
   const [userInput, setUserInput] = useState(['', '', '']);
   const [totalData, setTotalData] = useState(['', '', '']);
-  const [memeHistory, setMemeHistory] = useState(storedUrls);
+  const [memeHistory, setMemeHistory] = useState(storedUrls || '');
 
   const url = `https://api.memegen.link/images/${totalData[2]}/${totalData[0]}/${totalData[1]}`;
 
