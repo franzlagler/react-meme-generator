@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, Global } from '@emotion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from './Button';
 import CurrentMeme from './CurrentMeme';
 import globalStyle from './globalStyle.js';
@@ -9,6 +9,8 @@ import HorizontalRuler from './HorizontalRuler';
 import Input from './InputField';
 import MemeHistory from './MemeHistory';
 import Options from './Options';
+
+// CSS Styles
 
 const mainContainer = css`
   display: grid;
@@ -27,7 +29,7 @@ const generateDownloadButtons = css`
 
 function App() {
   const storedUrls = JSON.parse(localStorage.getItem('memeHistory'));
-
+  // State Variables
   const [templateSelection, setTemplateSelection] = useState('');
   const [userInput, setUserInput] = useState(['', '', '']);
   const [totalData, setTotalData] = useState(['', '', '']);
@@ -99,11 +101,12 @@ function App() {
     updatedMemeHistoryArray.pop();
     setMemeHistory(updatedMemeHistoryArray);
   };
-
+  // Update Local Storge on memeHistory Variable Change
   useEffect(() => {
     localStorage.setItem('memeHistory', JSON.stringify(memeHistory));
     JSON.parse(localStorage.getItem('memeHistory'));
   }, [memeHistory]);
+
   return (
     <>
       <Global styles={globalStyle} />

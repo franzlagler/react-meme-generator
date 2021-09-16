@@ -10,6 +10,7 @@ const memeHistoryContainer = css`
 `;
 const heading = css`
   text-align: center;
+  margin: 10px auto;
 `;
 
 const previousImage = css`
@@ -28,6 +29,7 @@ function MemeHistory(props) {
     <>
       <h2 css={heading}>Meme History</h2>
       <div css={memeHistoryContainer}>
+        {/* Create a list of previously used images */}
         {props.memeHistory[0] &&
           props.memeHistory.map((el) => {
             return (
@@ -41,7 +43,7 @@ function MemeHistory(props) {
               </React.Fragment>
             );
           })}
-        {!props.memeHistory[0] && <p css={noHistoryPara}>No stored</p>}
+        {!props.memeHistory[0] && <p css={noHistoryPara}>No memes stored</p>}
       </div>
     </>
   );

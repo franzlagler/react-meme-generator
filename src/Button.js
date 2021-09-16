@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 function Button(props) {
+  // Emotion Styling
   const button = css`
     display: inline-block;
     width: 150px;
