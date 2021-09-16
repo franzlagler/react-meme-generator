@@ -15,7 +15,7 @@ const input = css`
   display: block;
   width: 300px;
   height: 50px;
-  padding: 5px 10px;
+  padding: 10px;
   border: 3px solid #212529;
   border-radius: 15px;
   font-size: 20px;

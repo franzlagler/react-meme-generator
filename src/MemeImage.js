@@ -9,8 +9,14 @@ const memeImage = css`
   border-radius: 10px;
 `;
 
+const noImage = css`
+  display: flex;
+  justify-content: center;
+`;
+
 function MemeImage(props) {
-  const url = `https://api.memegen.link/images/${props.memeData[2]}/${props.memeData[0]}/${props.memeData[1]}`;
+  const url = `https://api.memegen.link/images/${props.totalData[2]}/${props.totalData[0]}/${props.totalData[1]}`;
+
   const firstUpdate = useRef(true);
 
   useEffect(() => {
@@ -24,15 +30,16 @@ function MemeImage(props) {
           const blobUrl = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = blobUrl;
-          a.setAttribute('download', `meme${props.memeData[2]}.png`);
+          a.setAttribute('download', `meme${props.totalData[2]}.png`);
           a.style = 'display: none';
           a.click();
         });
     }
-  }, [props.memeData]);
+  }, [props.totalData, url]);
   return (
     <div>
-      {props.memeData[0] && <img src={url} alt="Meme" css={memeImage} />}
+      {props.totalData[0] && <img src={url} alt="Meme" css={memeImage} />}
+      {!props.totalData[0] && <p css={noImage}>No meme available to display</p>}
     </div>
   );
 }

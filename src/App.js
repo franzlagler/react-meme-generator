@@ -21,29 +21,39 @@ const mainContainer = css`
 `;
 
 function App() {
+  const [templateSelection, setTemplateSelection] = useState('');
   const [userInput, setUserInput] = useState(['', '', '']);
-  const [memeData, setMemeData] = useState(['', '', '']);
+  const [totalData, setTotalData] = useState(['', '', '']);
 
   const handleInputChange = ({ currentTarget }) => {
+    console.log(currentTarget);
     const updatedUserInputArray = [...userInput];
-    let newValue = currentTarget.value;
+    const newValue = currentTarget.value;
     if (currentTarget.id === 'topText') {
       updatedUserInputArray[0] = newValue;
       setUserInput(updatedUserInputArray);
     } else if (currentTarget.id === 'bottomText') {
       updatedUserInputArray[1] = newValue;
       setUserInput(updatedUserInputArray);
-    } else {
-      updatedUserInputArray[2] = newValue;
-      setUserInput(updatedUserInputArray);
     }
   };
 
+  const saveTemplateSelection = (item) => {
+    setTemplateSelection(item.name);
+  };
+
+  const handleTemplateChange = (item) => {
+    const updatedUserInputArray = [...userInput];
+    updatedUserInputArray[2] = item.id;
+    setUserInput(updatedUserInputArray);
+  };
+
   const handleButtonClick = () => {
-    const memeDataUpdated = userInput.map((element) => {
+    console.log(userInput);
+    const totalDataUpdated = userInput.map((element) => {
       return element.toLowerCase().replace(' ', '_');
     });
-    setMemeData(memeDataUpdated);
+    setTotalData(totalDataUpdated);
   };
 
   return (
@@ -63,16 +73,16 @@ function App() {
           value={userInput[1]}
           handleInputChange={handleInputChange}
         />
-        <Input
-          id="temmplate"
-          name="Template"
-          value={userInput[2]}
-          handleInputChange={handleInputChange}
+
+        <Options
+          handleTemplateChange={handleTemplateChange}
+          saveTemplateSelection={saveTemplateSelection}
+          templateSelection={templateSelection}
+          totalData={totalData}
         />
-        <Options />
         <Button name="Generate" handleButtonClick={handleButtonClick} />
         <HorizontalRuler />
-        <MemeImage memeData={memeData} />
+        <MemeImage totalData={totalData} />
       </div>
     </>
   );
