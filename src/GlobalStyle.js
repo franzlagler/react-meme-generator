@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-const GlobalStyle = css`
+const globalStyle = css`
   @import url(href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
   * {
     box-sizing: border-box;
@@ -12,4 +12,4 @@ const GlobalStyle = css`
   }
 `;
 
-export default GlobalStyle;
+export default globalStyle;
