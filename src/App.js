@@ -3,7 +3,7 @@ import { css, Global } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import Button from './Button';
 import CurrentMeme from './CurrentMeme';
-import globalStyle from './globalStyle.js';
+import globalStyling from './globalStyling.js';
 import Heading from './Heading';
 import HorizontalRuler from './HorizontalRuler';
 import Input from './InputField';
@@ -109,7 +109,7 @@ function App() {
 
   return (
     <>
-      <Global styles={globalStyle} />
+      <Global styles={globalStyling} />
       <div css={mainContainer}>
         <Heading />
         <Input
